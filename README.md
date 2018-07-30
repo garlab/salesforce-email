@@ -17,9 +17,9 @@ Or with yarn
 
 ## Usage
 
-    import { isValid } from 'salesforce-email'
+    import { isValidEmail } from 'salesforce-email'
 
-    console.log(isValid('foo@bar.com')) // true
+    console.log(isValidEmail('foo@bar.com')) // true
 
 [1]: https://help.salesforce.com/articleView?id=000001145&type=1
 [2]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#Validation

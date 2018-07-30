@@ -1,60 +1,60 @@
 import test from 'ava'
-import { isValid } from '.'
+import { isValidEmail } from '.'
 
 test('basic emails', t => {
-  t.true(isValid('aaa@bbb.com'))
-  t.true(isValid('kjetilk@hotmail.com'))
-  t.true(isValid('koh.lis@gmail.com'))
-  t.true(isValid('koh.lis+test@gmail.com'))
-  t.true(isValid('errxn@yahoo.com'))
-  t.true(isValid('qrczak@icloud.com'))
-  t.true(isValid('crimsane@msn.com'))
-  t.true(isValid('pgolle@optonline.net'))
-  t.true(isValid('stakasa@msn.com'))
-  t.true(isValid('denism@me.com'))
-  t.true(isValid('matsn@verizon.net'))
-  t.true(isValid('formis@msn.com'))
-  t.true(isValid('kewley@att.net'))
-  t.true(isValid('elmer@att.net'))
+  t.true(isValidEmail('aaa@bbb.com'))
+  t.true(isValidEmail('kjetilk@hotmail.com'))
+  t.true(isValidEmail('koh.lis@gmail.com'))
+  t.true(isValidEmail('koh.lis+test@gmail.com'))
+  t.true(isValidEmail('errxn@yahoo.com'))
+  t.true(isValidEmail('qrczak@icloud.com'))
+  t.true(isValidEmail('crimsane@msn.com'))
+  t.true(isValidEmail('pgolle@optonline.net'))
+  t.true(isValidEmail('stakasa@msn.com'))
+  t.true(isValidEmail('denism@me.com'))
+  t.true(isValidEmail('matsn@verizon.net'))
+  t.true(isValidEmail('formis@msn.com'))
+  t.true(isValidEmail('kewley@att.net'))
+  t.true(isValidEmail('elmer@att.net'))
 })
 
 test('valid characters', t => {
   t.true(
-    isValid(
+    isValidEmail(
       "abcdefg.hijklmnopqrstuvwxyz!#$%&'*/=?^_+-`{|}~0123456789@acme-inc.com"
     )
   )
-  t.false(isValid('denism[]@me.com'))
+  t.false(isValidEmail('denism[]@me.com'))
 })
 
 test('Only one @ allowed', t => {
-  t.false(isValid('denism@@me.com'))
-  t.false(isValid('@me.com'))
-  t.false(isValid('fooobar@'))
+  t.false(isValidEmail('denism@@me.com'))
+  t.false(isValidEmail('@me.com'))
+  t.false(isValidEmail('fooobar@'))
 })
 
 test('accents are not allowed', t => {
-  t.false(isValid('denismé@me.com'))
-  t.false(isValid('françois@me.com'))
+  t.false(isValidEmail('denismé@me.com'))
+  t.false(isValidEmail('françois@me.com'))
 })
 
 test('period character', t => {
-  t.true(isValid('a..a@test.jp'))
-  t.true(isValid('a..@test.jp'))
-  t.false(isValid('.a@test.jp'))
+  t.true(isValidEmail('a..a@test.jp'))
+  t.true(isValidEmail('a..@test.jp'))
+  t.false(isValidEmail('.a@test.jp'))
 })
 
 test('base64', t => {
-  t.false(isValid('TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCB'))
+  t.false(isValidEmail('TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCB'))
 })
 
 test('spaces are not allowed', t => {
-  t.false(isValid('xxx yyy@gmail.com'))
-  t.false(isValid('  aaa@dot.com'))
-  t.false(isValid('aaa@dot.com\t'))
+  t.false(isValidEmail('xxx yyy@gmail.com'))
+  t.false(isValidEmail('  aaa@dot.com'))
+  t.false(isValidEmail('aaa@dot.com\t'))
 })
 
 test('comments are not allowed', t => {
-  t.false(isValid('john.doe@(comment)example.com'))
-  t.false(isValid('john.doe@example.com(comment)'))
+  t.false(isValidEmail('john.doe@(comment)example.com'))
+  t.false(isValidEmail('john.doe@example.com(comment)'))
 })
