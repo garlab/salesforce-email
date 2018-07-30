@@ -1,0 +1,34 @@
+{
+  "name": "salesforce-email",
+  "version": "1.0.0",
+  "description": "Check that email respect the Salesforce format",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "test:coverage": "nyc --reporter=html --reporter=text ava",
+    "test:watch": "ava --watch"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "nyc": "^11.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garlab/salesforce-email.git"
+  },
+  "keywords": [
+    "salesforce",
+    "email",
+    "validation",
+    "valid"
+  ],
+  "author": "Anthony Garcia-Labiad <anthony.garlab@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garlab/salesforce-email/issues"
+  },
+  "homepage": "https://github.com/garlab/salesforce-email#readme",
+  "dependencies": {
+    "npm": "^6.2.0"
+  }
+}
