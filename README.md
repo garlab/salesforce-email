@@ -1,9 +1,12 @@
 # salesforce-email
 
-Check that email respect the Salesforce format.
-This follow [the salesforce format][1] for the local-part and [Mozilla regex][2] for the domain-part.
+This package provides a validation function that check that the given email address is compatible
+with Salesforce.
+It follows [the salesforce format][1] for the local-part and [Mozilla regex][2] for the domain-part of the email.
 
-It also rejects the comment blocks, for example john.doe@(comment)example.com, and john.doe@example.com(comment) are allowed by salesforce but rejected by this module.
+Like Salesforce, it does not respect the [RFC 6532](https://tools.ietf.org/html/rfc6532) and will reject emails with accents and other special characters.
+
+Unlike Salesforce, it does not accept comments; for example john.doe@(comment)example.com, and john.doe@example.com(comment) are allowed by salesforce but rejected by this module.
 
 ## Installation
 

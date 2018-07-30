@@ -1,7 +1,7 @@
 {
   "name": "salesforce-email",
   "version": "1.0.0",
-  "description": "Check that email respect the Salesforce format",
+  "description": "Check that the email is compatible with Salesforce",
   "main": "index.js",
   "scripts": {
     "test": "ava",
