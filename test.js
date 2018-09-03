@@ -58,3 +58,8 @@ test('comments are not allowed', t => {
   t.false(isValidEmail('john.doe@(comment)example.com'))
   t.false(isValidEmail('john.doe@example.com(comment)'))
 })
+
+test('domains without extension are rejected', t => {
+  t.false(isValidEmail('foo.bar@gmail'))
+	t.false(isValidEmail('a.b@microsoft'))
+})
