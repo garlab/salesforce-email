@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "nyc": "^11.4.1"
+    "nyc": "^13.1.0"
   },
   "repository": {
     "type": "git",
