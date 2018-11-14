@@ -27,8 +27,5 @@
   "bugs": {
     "url": "https://github.com/garlab/salesforce-email/issues"
   },
-  "homepage": "https://github.com/garlab/salesforce-email#readme",
-  "dependencies": {
-    "npm": "^6.4.1"
-  }
+  "homepage": "https://github.com/garlab/salesforce-email#readme"
 }
