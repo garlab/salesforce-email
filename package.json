@@ -9,7 +9,7 @@
     "test:watch": "ava --watch"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^5.1.0",
     "nyc": "^13.1.0"
   },
   "repository": {
