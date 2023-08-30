@@ -1,5 +1,5 @@
-import test from 'ava'
-import { isValidEmail } from '.'
+const test = require('ava')
+const { isValidEmail } = require('.')
 
 test('basic emails', t => {
   t.true(isValidEmail('aaa@bbb.com'))
