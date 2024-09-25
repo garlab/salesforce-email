@@ -1,65 +1,67 @@
-const test = require('ava')
+const test = require('node:test')
+const assert = require('node:assert')
 const { isValidEmail } = require('.')
 
-test('basic emails', t => {
-  t.true(isValidEmail('aaa@bbb.com'))
-  t.true(isValidEmail('kjetilk@hotmail.com'))
-  t.true(isValidEmail('koh.lis@gmail.com'))
-  t.true(isValidEmail('koh.lis+test@gmail.com'))
-  t.true(isValidEmail('errxn@yahoo.com'))
-  t.true(isValidEmail('qrczak@icloud.com'))
-  t.true(isValidEmail('crimsane@msn.com'))
-  t.true(isValidEmail('pgolle@optonline.net'))
-  t.true(isValidEmail('stakasa@msn.com'))
-  t.true(isValidEmail('denism@me.com'))
-  t.true(isValidEmail('matsn@verizon.net'))
-  t.true(isValidEmail('formis@msn.com'))
-  t.true(isValidEmail('kewley@att.net'))
-  t.true(isValidEmail('elmer@att.net'))
+test('basic emails', () => {
+  assert.strictEqual(isValidEmail('aaa@bbb.com'), true)
+  assert.strictEqual(isValidEmail('kjetilk@hotmail.com'), true)
+  assert.strictEqual(isValidEmail('koh.lis@gmail.com'), true)
+  assert.strictEqual(isValidEmail('koh.lis+test@gmail.com'), true)
+  assert.strictEqual(isValidEmail('errxn@yahoo.com'), true)
+  assert.strictEqual(isValidEmail('qrczak@icloud.com'), true)
+  assert.strictEqual(isValidEmail('crimsane@msn.com'), true)
+  assert.strictEqual(isValidEmail('pgolle@optonline.net'), true)
+  assert.strictEqual(isValidEmail('stakasa@msn.com'), true)
+  assert.strictEqual(isValidEmail('denism@me.com'), true)
+  assert.strictEqual(isValidEmail('matsn@verizon.net'), true)
+  assert.strictEqual(isValidEmail('formis@msn.com'), true)
+  assert.strictEqual(isValidEmail('kewley@att.net'), true)
+  assert.strictEqual(isValidEmail('elmer@att.net'), true)
 })
 
-test('valid characters', t => {
-  t.true(
+test('valid characters', () => {
+  assert.strictEqual(
     isValidEmail(
       "abcdefg.hijklmnopqrstuvwxyz!#$%&'*/=?^_+-`{|}~0123456789@acme-inc.com"
-    )
+    ),
+    true
   )
-  t.false(isValidEmail('denism[]@me.com'))
+  assert.strictEqual(isValidEmail('denism[]@me.com'), false)
 })
 
-test('Only one @ allowed', t => {
-  t.false(isValidEmail('denism@@me.com'))
-  t.false(isValidEmail('@me.com'))
-  t.false(isValidEmail('fooobar@'))
+test('Only one @ allowed', () => {
+  assert.strictEqual(isValidEmail('denism@@me.com'), false)
+  assert.strictEqual(isValidEmail('@me.com'), false)
+  assert.strictEqual(isValidEmail('fooobar@'), false)
 })
 
-test('accents are not allowed', t => {
-  t.false(isValidEmail('denismé@me.com'))
-  t.false(isValidEmail('françois@me.com'))
+test('accents are not allowed', () => {
+  assert.strictEqual(isValidEmail('denismé@me.com'), false)
+  assert.strictEqual(isValidEmail('françois@me.com'), false)
 })
 
-test('period character', t => {
-  t.true(isValidEmail('a..a@test.jp'))
-  t.true(isValidEmail('a..@test.jp'))
-  t.false(isValidEmail('.a@test.jp'))
+test('period character', () => {
+  assert.strictEqual(isValidEmail('a..a@test.jp'), true)
+  assert.strictEqual(isValidEmail('a..@test.jp'), true)
+  assert.strictEqual(isValidEmail('.a@test.jp'), false)
 })
 
-test('base64', t => {
-  t.false(isValidEmail('TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCB'))
+test('base64', () => {
+  assert.strictEqual(isValidEmail('TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCB'), false)
 })
 
-test('spaces are not allowed', t => {
-  t.false(isValidEmail('xxx yyy@gmail.com'))
-  t.false(isValidEmail('  aaa@dot.com'))
-  t.false(isValidEmail('aaa@dot.com\t'))
+test('spaces are not allowed', () => {
+  assert.strictEqual(isValidEmail('xxx yyy@gmail.com'), false)
+  assert.strictEqual(isValidEmail('  aaa@dot.com'), false)
+  assert.strictEqual(isValidEmail('aaa@dot.com\t'), false)
 })
 
-test('comments are not allowed', t => {
-  t.false(isValidEmail('john.doe@(comment)example.com'))
-  t.false(isValidEmail('john.doe@example.com(comment)'))
+test('comments are not allowed', () => {
+  assert.strictEqual(isValidEmail('john.doe@(comment)example.com'), false)
+  assert.strictEqual(isValidEmail('john.doe@example.com(comment)'), false)
 })
 
-test('domains without extension are rejected', t => {
-  t.false(isValidEmail('foo.bar@gmail'))
-	t.false(isValidEmail('a.b@microsoft'))
+test('domains without extension are rejected', () => {
+  assert.strictEqual(isValidEmail('foo.bar@gmail'), false)
+  assert.strictEqual(isValidEmail('a.b@microsoft'), false)
 })

@@ -4,13 +4,8 @@
   "description": "Check that the email is compatible with Salesforce",
   "main": "index.js",
   "scripts": {
-    "test": "ava",
-    "test:coverage": "nyc --reporter=html --reporter=text ava",
-    "test:watch": "ava --watch"
-  },
-  "devDependencies": {
-    "ava": "^5.3.1",
-    "nyc": "^15.1.0"
+    "test": "node --test",
+    "test:watch": "node --test --watch"
   },
   "repository": {
     "type": "git",
